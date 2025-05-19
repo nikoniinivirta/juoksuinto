@@ -209,20 +209,15 @@
       const tahtiSek = Math.round(tahti % 60).toString().padStart(2, '0');
 
       document.getElementById('tahtiVastaus').textContent = `Sinun tulisi juosta jokainen kilometri noin ${tahtiMin}:${tahtiSek} minuuttivauhtia. 🕒`;
-    
-
-
-  
-// Tervehdi käyttäjää query-parametrin perusteella
+    }
+    // Nimi lisätään otsikon perään
 (function() {
   const params = new URLSearchParams(window.location.search);
   const nimi = params.get('nimi');
   if (nimi) {
     const h1 = document.querySelector('.hero h1');
-    if (h1) {
-      h1.textContent = `${h1.textContent}, ${nimi}!`;
-    }
-})();
+    if (h1) h1.textContent = `${h1.textContent}, ${nimi}!`;
+  }
 
 })();
   </script>
