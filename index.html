@@ -211,20 +211,17 @@
       document.getElementById('tahtiVastaus').textContent = `Sinun tulisi juosta jokainen kilometri noin ${tahtiMin}:${tahtiSek} minuuttivauhtia. 🕒`;
     }
 
-    // Urli-nimi-ominaisuus: tervehdys sivun alkuun
-(function() {
-  // Etsi nimi url-polusta (esim. /Meri)
-  const polku = window.location.pathname;
-  const osat = polku.split('/').filter(Boolean);
 
-  if (osat.length > 0) {
-    const nimi = decodeURIComponent(osat[osat.length - 1]);
-    // Etsi ensimmäinen h1 (esim. hero-otsikko)
-    const h1 = document.querySelector('.hero h1');
-    if (h1) {
-      h1.textContent = `Hei ${nimi}!`;
-    }
   }
+  // Lisää tämä scriptisi joukkoon
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const nimi = params.get('nimi');
+  if (nimi) {
+    const h1 = document.querySelector('.hero h1');
+    if (h1) h1.textContent = `Hei ${nimi}!`;
+  }
+})();
 })();
   </script>
 </body>
