@@ -104,7 +104,7 @@
 </head>
 <body>
   <section class="hero">
-    <h1>Tervetuloa kuulemaan juoksemisen ilosanomasta!</h1>
+    <h1>Tervetuloa kuulemaan juoksemisen ilosanomasta</h1>
     <button onclick="scrollToSection('miksi')">Miksi juosta?</button>
   </section>
 
@@ -219,8 +219,10 @@
   const nimi = params.get('nimi');
   if (nimi) {
     const h1 = document.querySelector('.hero h1');
-    if (h1) h1.textContent = `Hei ${nimi}!`;
-  }
+    if (h1) {
+      h1.textContent = `${h1.textContent}, ${nimi}!`;
+    }
+})();
 
 })();
   </script>
