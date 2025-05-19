@@ -113,25 +113,28 @@
     <ul>
       <li>🏃‍♀️ Endorfiinit ovat ilmaisia.</li>
       <li>💡 Päivän paras ajatus tulee usein lenkillä.</li>
-      <li>👟 Et tarvitse salikorttia – kengät riittää.</li>
+      <li>👟 Et tarvitse salikorttia ja kuukausimaksuja – kengät riittää.</li>
+      <li>⏱ Treeni alkaa ja päättyy kotiovelta ja on ohi jo ennen kuin olisit matkalla treenipaikalle.</li>
+      <li>🗯 Pääset kertomaan kavereille juoksulenkistä - kysyivät he siitä tai ei.</li>
+      <li>💪 Jotain terveyshyötyjäkin kai.</li>
     </ul>
   </section>
 
   <section>
-    <h2>Kuinka aloittaa</h2>
+    <h2>Kuinka aloittaa?</h2>
     <ol>
       <li>Pue kengät.</li>
       <li>Kävele 5 minuuttia, hölkkää 1.</li>
-      <li>Tee sama huomenna.</li>
+      <li>Lepää ja toista huomenna.</li>
     </ol>
     <p><em>Aloittaminen on tärkeintä.</em></p>
   </section>
 
   <section>
     <h2>Kilometrilaskuri</h2>
-    <label for="km">Kuinka monta km viikossa jaksaisit ehkä juosta?</label>
+    <label for="km">Kuinka monta km viikossa voisit juosta juosta?</label>
     <input type="number" id="km" />
-    <button onclick="laskeKm()">Laske 10 vuoden vaikutus</button>
+    <button onclick="laskeKm()">Laske pitkän aikavälin vaikutus</button>
     <p id="kmVastaus"></p>
   </section>
 
@@ -177,7 +180,7 @@
       const vuodet = 10;
       const viikkoja = vuodet * 52;
       const kokonaissumma = km * viikkoja;
-      document.getElementById('kmVastaus').textContent = `Jos juokset ${km} km viikossa, 10 vuoden päästä olet juossut ${kokonaissumma} kilometriä! 🚀`;
+      document.getElementById('kmVastaus').textContent = `Jos juokset ${km} km viikossa, 10 vuoden päästä olet juossut ${kokonaissumma} kilometriä enemmän, kuin se versio sinusta joka ei koskaan aloittanut! 🚀`;
     }
 
     function laskeTahti() {
