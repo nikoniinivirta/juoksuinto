@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juoksun ilosanoma</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: linear-gradient(#f0fff0, #e0f7fa);
+      color: #333;
+    }
+
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .hero {
+      background: url('https://source.unsplash.com/featured/?running,path') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 6rem 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background: #ff4081;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .hero button:hover {
+      background: #f50057;
+    }
+
+    h2 {
+      color: #2e7d32;
+      font-size: 1.8rem;
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin: 0.5rem 0 0.25rem;
+    }
+
+    input, select {
+      padding: 0.5rem;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #00897b;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #00695c;
+    }
+
+    .scroll-animaatio {
+      background: linear-gradient(to bottom, #e0f7fa, #c8e6c9);
+      text-align: center;
+      padding: 5rem 1rem;
+      font-style: italic;
+    }
+
+    .loppu {
+      text-align: center;
+      background-color: #fce4ec;
+      padding: 3rem 1rem;
+    }
+
+    .loppu h2 {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <h1>Tervetuloa kuulemaan juoksemisen ilosanomasta!</h1>
+    <button onclick="scrollToSection('miksi')">Miksi juosta?</button>
+  </section>
+
+  <section id="miksi">
+    <h2>Miksi juosta?</h2>
+    <ul>
+      <li>🏃‍♀️ Endorfiinit ovat ilmaisia.</li>
+      <li>💡 Päivän paras ajatus tulee usein lenkillä.</li>
+      <li>👟 Et tarvitse salikorttia – kengät riittää.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Kuinka aloittaa</h2>
+    <ol>
+      <li>Pue kengät.</li>
+      <li>Kävele 5 minuuttia, hölkkää 1.</li>
+      <li>Tee sama huomenna.</li>
+    </ol>
+    <p><em>Aloittaminen on tärkeintä.</em></p>
+  </section>
+
+  <section>
+    <h2>Kilometrilaskuri</h2>
+    <label for="km">Kuinka monta km viikossa jaksaisit ehkä juosta?</label>
+    <input type="number" id="km" />
+    <button onclick="laskeKm()">Laske 10 vuoden vaikutus</button>
+    <p id="kmVastaus"></p>
+  </section>
+
+  <section>
+    <h2>Tahtilaskuri</h2>
+    <label for="matka">Valitse matka:</label>
+    <select id="matka">
+      <option value="5">5 km</option>
+      <option value="10">10 km</option>
+      <option value="21.097">Puolimaraton</option>
+      <option value="42.195">Maraton</option>
+    </select><br>
+    <label for="aika">Aikatavoite (hh:mm:ss):</label>
+    <input type="text" id="aika" placeholder="01:00:00" />
+    <button onclick="laskeTahti()">Laske tahtisi</button>
+    <p id="tahtiVastaus"></p>
+  </section>
+
+  <section class="scroll-animaatio">
+    <h2>Juoksun matka alkaa...</h2>
+    <p>(Tähän tulee myöhemmin scrollaava jalkojen animaatio)</p>
+  </section>
+
+  <section class="loppu">
+    <h2>Et tule katumaan että lähdit.</h2>
+    <button>Tulosta juoksulupaus</button>
+  </section>
+
+  <script>
+    function scrollToSection(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function laskeKm() {
+      const km = parseFloat(document.getElementById('km').value);
+      if (isNaN(km) || km <= 0) {
+        document.getElementById('kmVastaus').textContent = 'Syötä positiivinen kilometrimäärä!';
+        return;
+      }
+      const vuodet = 10;
+      const viikkoja = vuodet * 52;
+      const kokonaissumma = km * viikkoja;
+      document.getElementById('kmVastaus').textContent = `Jos juokset ${km} km viikossa, 10 vuoden päästä olet juossut ${kokonaissumma} kilometriä! 🚀`;
+    }
+
+    function laskeTahti() {
+      const matka = parseFloat(document.getElementById('matka').value);
+      const aikaStr = document.getElementById('aika').value;
+      const osat = aikaStr.split(':');
+
+      if (osat.length !== 3) {
+        document.getElementById('tahtiVastaus').textContent = 'Syötä aika muodossa hh:mm:ss';
+        return;
+      }
+
+      const tunnit = parseInt(osat[0], 10);
+      const minuutit = parseInt(osat[1], 10);
+      const sekunnit = parseInt(osat[2], 10);
+
+      if (isNaN(tunnit) || isNaN(minuutit) || isNaN(sekunnit)) {
+        document.getElementById('tahtiVastaus').textContent = 'Varmista että syötit numerot oikein.';
+        return;
+      }
+
+      const kokonaisSekunnit = (tunnit * 3600) + (minuutit * 60) + sekunnit;
+      const tahti = kokonaisSekunnit / matka;
+
+      const tahtiMin = Math.floor(tahti / 60);
+      const tahtiSek = Math.round(tahti % 60).toString().padStart(2, '0');
+
+      document.getElementById('tahtiVastaus').textContent = `Sinun tulisi juosta jokainen kilometri noin ${tahtiMin}:${tahtiSek} minuuttivauhtia. 🕒`;
+    }
+  </script>
+</body>
+</html>
