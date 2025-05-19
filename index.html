@@ -213,7 +213,7 @@
 
 
   }
-  // Lisää tämä scriptisi joukkoon
+// Tervehdi käyttäjää query-parametrin perusteella
 (function() {
   const params = new URLSearchParams(window.location.search);
   const nimi = params.get('nimi');
@@ -221,7 +221,7 @@
     const h1 = document.querySelector('.hero h1');
     if (h1) h1.textContent = `Hei ${nimi}!`;
   }
-})();
+
 })();
   </script>
 </body>
