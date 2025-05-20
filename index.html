@@ -24,18 +24,19 @@
       margin-bottom: 2rem;
     }
 
-    .hero {
-      background: #b9fbc0;
-      color: #0e4022;
-      text-align: center;
-      padding: 6rem 1.5rem;
-      border: none;
-      border-radius: 0;
-    }
-    .hero {
+  
+.hero {
+  background: #b9fbc0;
+  color: #0e4022;
+  text-align: center;
+  padding: 6rem 1.5rem;
+  border: none;
+  border-radius: 0;
   position: relative;
   z-index: 1;
-  overflow: hidden;
+  /* Uusi maski, toimii Chrome/Edge/Safari */
+  -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 50%, #000 80%, transparent 100%);
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 50%, #000 80%, transparent 100%);
 }
 .hero::before {
   content: "";
