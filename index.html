@@ -32,6 +32,24 @@
       border: none;
       border-radius: 0;
     }
+    .hero {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20px; left: -20px; right: -20px; bottom: -20px;
+  z-index: 0;
+  pointer-events: none;
+  background: inherit;
+  filter: blur(20px);
+}
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
 
     .hero h1 {
       font-size: 2.5rem;
@@ -52,30 +70,7 @@
     .hero button:hover {
       background: #86efac;
     }
-    .hero {
-  background: #b9fbc0;
-  color: #0e4022;
-  text-align: center;
-  padding: 6rem 1.5rem;
-  border: none;
-  border-radius: 0;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -20px; left: -20px; right: -20px; bottom: -20px;
-  z-index: 0;
-  pointer-events: none;
-  background: inherit;
-  filter: blur(20px);
-}
-.hero > * {
-  position: relative;
-  z-index: 1;
-}
+    
 
     h2 {
       color: #14532d;
@@ -251,7 +246,7 @@
   </section>
 
   <section class="kutsuosio">
-    <h2>Kutsu mukaan kaveri!</h2>
+    <h2>Kutsu mukaan kaveri huisin hauskalla personoidulla linkillä!</h2>
     <label for="kaverinNimi">Kaverin nimi:</label>
     <input type="text" id="kaverinNimi" placeholder="Esim. Pekka tai Maija" />
     <button onclick="kutsuKaveri()">Luo oma kutsulinkki</button>
