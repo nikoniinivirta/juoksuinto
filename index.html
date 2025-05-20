@@ -24,17 +24,19 @@
       margin-bottom: 2rem;
     }
 
-  hero {
+  .hero {
   background: #b9fbc0;
   color: #0e4022;
   text-align: center;
   padding: 6rem 1.5rem;
-  border: none;
-  border-radius: 0;
+  border: 6px solid #14532d;         /* Selkeä vihreä kehys */
+  border-radius: 24px;                /* Pyöristetyt kulmat, makusi mukaan */
   position: relative;
   z-index: 1;
-  /* Tummanvihreä sumennettu reuna */
-  box-shadow: 0 0 20px 0 #14532d88, 0 0 20px 20px #14532d44;
+  box-shadow:
+    0 0 0 12px #14532d22,            /* Pehmeä, läpikuultava vihreä ulkoreuna */
+    0 2px 32px 0 #14532d33;          /* Hieman lisää sumua ulospäin */
+  overflow: hidden;
 }
 .hero::before {
   content: "";
