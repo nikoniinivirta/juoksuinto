@@ -10,7 +10,7 @@
       margin: 0;
       padding: 0;
       line-height: 1.6;
-      background: linear-gradient(#f0fff0, #e0f7fa);
+      background: #f5fff5;
       color: #333;
     }
 
@@ -18,13 +18,19 @@
       padding: 3rem 1.5rem;
       max-width: 800px;
       margin: auto;
+      background-color: #ffffff;
+      border: 2px solid #14532d;
+      border-radius: 16px;
+      margin-bottom: 2rem;
     }
 
     .hero {
-      background: url('https://images.unsplash.com/photo-1477332552946-cfb384aeaf1c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
-      color: white;
+      background: #b9fbc0;
+      color: #0e4022;
       text-align: center;
       padding: 6rem 1.5rem;
+      border: none;
+      border-radius: 0;
     }
 
     .hero h1 {
@@ -35,20 +41,20 @@
     .hero button {
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
-      background: #ff4081;
+      background: #a3f7bf;
       border: none;
       border-radius: 8px;
-      color: white;
+      color: #0e4022;
       cursor: pointer;
       transition: background 0.3s;
     }
 
     .hero button:hover {
-      background: #f50057;
+      background: #86efac;
     }
 
     h2 {
-      color: #2e7d32;
+      color: #14532d;
       font-size: 1.8rem;
     }
 
@@ -71,7 +77,7 @@
     }
 
     button {
-      background-color: #00897b;
+      background-color: #64b68c;
       color: white;
       border: none;
       padding: 0.5rem 1rem;
@@ -81,11 +87,11 @@
     }
 
     button:hover {
-      background-color: #00695c;
+      background-color: #4b9f79;
     }
 
     .scroll-animaatio {
-      background: linear-gradient(to bottom, #e0f7fa, #c8e6c9);
+      background: linear-gradient(to bottom, #ecfdf5, #d1fae5);
       text-align: center;
       padding: 5rem 1rem;
       font-style: italic;
@@ -93,12 +99,38 @@
 
     .loppu {
       text-align: center;
-      background-color: #fce4ec;
+      background-color: #d1fae5;
       padding: 3rem 1rem;
+      border: 2px solid #14532d;
+      border-radius: 16px;
     }
 
     .loppu h2 {
       margin-bottom: 1rem;
+    }
+
+    .time-selects {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 300px;
+      margin-bottom: 1rem;
+    }
+    .time-selects select {
+      flex: 1;
+    }
+
+    .kutsuosio {
+      background-color: #e6ffed;
+      border: 2px solid #14532d;
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem auto;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    .kutsuosio input {
+      margin-top: 0.5rem;
     }
   </style>
 </head>
@@ -115,7 +147,7 @@
       <li>💡 Päivän paras ajatus tulee usein lenkillä.</li>
       <li>👟 Et tarvitse salikorttia ja kuukausimaksuja – kengät riittää.</li>
       <li>⏱ Treeni alkaa ja päättyy kotiovelta ja on ohi jo ennen kuin olisit matkalla treenipaikalle.</li>
-      <li>🗯 Pääset kertomaan kavereille juoksulenkistä - kysyivät he siitä tai ei.</li>
+      <li>🗰 Pääset kertomaan kavereille juoksulenkistä - kysyivät he siitä tai ei.</li>
       <li>💪 Jotain terveyshyötyjäkin kai.</li>
     </ul>
   </section>
@@ -147,8 +179,32 @@
       <option value="21.097">Puolimaraton</option>
       <option value="42.195">Maraton</option>
     </select><br>
-    <label for="aika">Aikatavoite (hh:mm:ss):</label>
-    <input type="text" id="aika" placeholder="01:00:00" />
+    <label>Aikatavoite:</label>
+    <div class="time-selects">
+      <select id="tunnit">
+        <option value="0">0 h</option>
+        <option value="1">1 h</option>
+        <option value="2">2 h</option>
+        <option value="3">3 h</option>
+        <option value="4">4 h</option>
+      </select>
+      <select id="minuutit">
+        <option value="0">0 min</option>
+        <option value="5">5 min</option>
+        <option value="10">10 min</option>
+        <option value="15">15 min</option>
+        <option value="20">20 min</option>
+        <option value="30">30 min</option>
+        <option value="45">45 min</option>
+        <option value="59">59 min</option>
+      </select>
+      <select id="sekunnit">
+        <option value="0">00 s</option>
+        <option value="15">15 s</option>
+        <option value="30">30 s</option>
+        <option value="45">45 s</option>
+      </select>
+    </div>
     <button onclick="laskeTahti()">Laske tahtisi</button>
     <p id="tahtiVastaus"></p>
   </section>
@@ -156,6 +212,14 @@
   <section class="scroll-animaatio">
     <h2>Juoksun matka alkaa...</h2>
     <p>(Tähän tulee myöhemmin scrollaava jalkojen animaatio)</p>
+  </section>
+
+  <section class="kutsuosio">
+    <h2>Kutsu mukaan kaveri!</h2>
+    <label for="kaverinNimi">Kaverin nimi:</label>
+    <input type="text" id="kaverinNimi" placeholder="Esim. Pekka tai Maija" />
+    <button onclick="kutsuKaveri()">Luo oma kutsulinkki</button>
+    <p id="kutsulinkki"></p>
   </section>
 
   <section class="loppu">
@@ -185,22 +249,9 @@
 
     function laskeTahti() {
       const matka = parseFloat(document.getElementById('matka').value);
-      const aikaStr = document.getElementById('aika').value;
-      const osat = aikaStr.split(':');
-
-      if (osat.length !== 3) {
-        document.getElementById('tahtiVastaus').textContent = 'Syötä aika muodossa hh:mm:ss';
-        return;
-      }
-
-      const tunnit = parseInt(osat[0], 10);
-      const minuutit = parseInt(osat[1], 10);
-      const sekunnit = parseInt(osat[2], 10);
-
-      if (isNaN(tunnit) || isNaN(minuutit) || isNaN(sekunnit)) {
-        document.getElementById('tahtiVastaus').textContent = 'Varmista että syötit numerot oikein.';
-        return;
-      }
+      const tunnit = parseInt(document.getElementById('tunnit').value, 10);
+      const minuutit = parseInt(document.getElementById('minuutit').value, 10);
+      const sekunnit = parseInt(document.getElementById('sekunnit').value, 10);
 
       const kokonaisSekunnit = (tunnit * 3600) + (minuutit * 60) + sekunnit;
       const tahti = kokonaisSekunnit / matka;
@@ -210,16 +261,26 @@
 
       document.getElementById('tahtiVastaus').textContent = `Sinun tulisi juosta jokainen kilometri noin ${tahtiMin}:${tahtiSek} minuuttivauhtia. 🕒`;
     }
-    // Nimi lisätään otsikon perään
-(function() {
-  const params = new URLSearchParams(window.location.search);
-  const nimi = params.get('nimi');
-  if (nimi) {
-    const h1 = document.querySelector('.hero h1');
-    if (h1) h1.textContent = `${h1.textContent}, ${nimi}!`;
-  }
 
-})();
+    function kutsuKaveri() {
+      const nimi = document.getElementById('kaverinNimi').value.trim();
+      const baseUrl = window.location.href.split('?')[0];
+      if (nimi) {
+        const kutsulinkki = `${baseUrl}?nimi=${encodeURIComponent(nimi)}`;
+        document.getElementById('kutsulinkki').innerHTML = `Jaa tämä linkki ${nimi}lle: <br><a href="${kutsulinkki}">${kutsulinkki}</a>`;
+      } else {
+        document.getElementById('kutsulinkki').textContent = 'Syötä ensin kaverin nimi!';
+      }
+    }
+
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const nimi = params.get('nimi');
+      if (nimi) {
+        const h1 = document.querySelector('.hero h1');
+        if (h1) h1.textContent = `${h1.textContent}, ${nimi}!`;
+      }
+    })();
   </script>
 </body>
 </html>
